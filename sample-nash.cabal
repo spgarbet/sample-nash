@@ -1,0 +1,21 @@
+Name:          sample-nash
+Version:       0.1
+Synopsis:      Finds a sample Nash Equilibrium of a normal form game.
+Description:
+    Implements the two algorithms described in the paper
+	"Simple Search Methods for Find a Nash Equilibrium", by
+	Ryan Porter, Eugene Nudelman, and Yoav Shoham.  A copy of the
+	paper can be found at http://www.ryanwporter.com/papers.html
+License:       GPL
+License-file:  LICENCE
+Author:        Ryan W. Porter
+Maintainer:    ryporter@gmail.com
+Homepage:      http://www.ryanwporter.com
+Build-Type:    Simple
+Cabal-Version: >=1.6
+
+Executable sample-nash
+  main-is: Data/GameTheory/Main.hs
+  ghc-options: -prof -auto-all -caf-all
+  build-depends:
+    base >= 3, haskell98 >= 1, parsec >= 3, bytestring, mtl >= 1.1, array >= 0.2, dlist >= 0.3, permutation >= 0.4, hmatrix-glpk >= 0.1, QuickCheck >= 2.1, levmar >= 0.2.1

@@ -1,0 +1,4 @@
+ * First and foremost, these implementations need to be optimized.  As I am sure is obvious, the author was a relative novice in Haskell when this project was first developed.  Some parts have been optimized (using -prof with ghc), but much work remains.
+
+ * It would be relatively easy to parallelize parts of these search algorithms.
+ 
