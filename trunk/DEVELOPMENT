@@ -1,0 +1,17 @@
+Below are some useful commands for development.
+
+
+
+To compile and install globally:
+> sudo runghc Setup.hs configure --global -p && sudo runghc Setup.hs build && sudo runghc Setup.hs install
+
+For memory profiling
+> hp2ps -e8in -c sample-nash.hp && ghostscript sample-nash.ps
+
+The following two games were selected because they do not have pure strategy equilibria, and thus are good for perf testing.  The expected results are given below each.
+
+> time sample-nash example-games/RandomGame-2-300-001.game +RTS -p -sstderr -hc -RTS
+[[(0,0.610739845039772),(263,0.3892601549602281)],[(15,0.9874954366683736),(183,1.2504563331626412e-2)]]
+
+> time sample-nash example-games/RandomGame-6-5-002.game +RTS -p -sstderr -hc -RTS
+[[(0,1.0)],[(3,1.0)],[(3,1.0)],[(0,0.8165139397012826),(4,0.18348606029871742)],[(0,0.5979108339726459),(2,0.40208916602735406)],[(0,1.0)]]

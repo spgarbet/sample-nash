@@ -1,0 +1,52 @@
+DESCRIPTION:
+
+  This project contains implementations of the two algorithms described in the paper "Simple Search Methods for Find a Nash Equilibrium", by Ryan Porter, Eugene Nudelman, and Yoav Shoham.  A copy of the paper can be found at http://www.ryanwporter.com/papers.html.
+
+  Note that these are NOT the implementations that produced the experimental results described in that paper.  Those, sadly, have been lost to the sands of time.  These implementations are similar, but slower, probably because the author is (as of this writing) less skilled at Haskell than at C++.
+
+STATUS:
+  The two-player solver seems robust, and the n-player solver works on most games.  However, it sometimes fails to find an equilibrium.  The most common symptom is a "SmallGradient" result from levmar library, but I do not know the underlying cause.
+  
+INSTALL:
+  This project is setup as a Haskell Cabal package.
+  
+  See http://www.haskell.org/cabal/ for how to install a Cabal package.
+
+  I had to install levmar manually, adding the following line
+  to NFunction.hs under ghc 6.12.1:
+    {-# LANGUAGE GADTs #-}
+  
+USAGE:
+  'sample-nash <game>'
+
+  <game> is a file containing a normal-form game, described using the
+  .nfg format defined in the Gambit Software Tools for Game Theory
+  at http://gambit.sourceforge.net/doc/gambit-0.2007.01.30/gambit/x1939.html
+
+  Example games can be found in the 'example-games' subdirectory.
+
+  The output is a list of strategy profiles, one for each player.
+  A strategy profile is a list of tuples (a,p), where 'a' is the action
+  (the first action is 0) and 'p' is the probability of playing that action.
+  For example, executing the following command produces an equilibrium in which
+  both players play both of their actions (0 and 1) with probability 0.5.
+
+  > sample-nash example-games/MatchingPennies.game
+  [[(0,0.5),(1,0.5)],[(0,0.5),(1,0.5)]]
+  
+TESTS:
+  From the root directory, execute "runghc Test/Main.hs".
+
+  QuickCheck is used to test both individual components and the solvers on randomly-generated 2- and n-person games.  All tests should pass, except for possibly the check for the solver of the n-player games (see STATUS).
+
+NOTES:
+  The GPL licence was chosen for this package because it transitively depends on bindings-levmar, which, according to http://hackage.haskell.org/package/levmar, is bundled together with a C library which falls under the GPL.
+
+AUTHOR:
+  Ryan W. Porter
+  ryporter@gmail.com
+  http://www.ryanwporter.com
+
+FEEDBACK:
+  Please contact the above author with any feedback.  Since a primary motivation for creating this project was to explore Haskell, I would particularly appreciate any Haskell-specific feedback.
+
