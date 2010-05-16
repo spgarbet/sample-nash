@@ -6,6 +6,7 @@ Description:
 	"Simple Search Methods for Find a Nash Equilibrium", by
 	Ryan Porter, Eugene Nudelman, and Yoav Shoham.  A copy of the
 	paper can be found at http://www.ryanwporter.com/papers.html
+Category: 	   Data
 License:       GPL
 License-file:  LICENCE
 Author:        Ryan W. Porter
@@ -13,9 +14,23 @@ Maintainer:    ryporter@gmail.com
 Homepage:      http://www.ryanwporter.com
 Build-Type:    Simple
 Cabal-Version: >=1.6
+extra-source-files:  README, DEVELOPMENT, TODO
+data-files:    example-games/*.game
 
 Executable sample-nash
   main-is: Data/GameTheory/Main.hs
   ghc-options: -prof -auto-all -caf-all
+  include-dirs: example-games
+  other-modules: Test.Main
+                 Test.TestGames
+                 Test.TestUtils
+                 Data.GameTheory.DotNfgParser
+                 Data.GameTheory.Iterators
+                 Data.GameTheory.LpSolver
+                 Data.GameTheory.NashError
+                 Data.GameTheory.Nfg
+                 Data.GameTheory.Solver2p
+                 Data.GameTheory.SolverNp
+                 Data.GameTheory.Utils
   build-depends:
     base >= 3, haskell98 >= 1, parsec >= 3, bytestring, mtl >= 1.1, array >= 0.2, dlist >= 0.3, permutation >= 0.4, hmatrix-glpk >= 0.1, QuickCheck >= 2.1, levmar >= 0.2.1
